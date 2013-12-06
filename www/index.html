@@ -34,7 +34,7 @@
                 <div> <br/> <br/> <br/> <br/> <br/> <br/> <br/> </div>
                 <form id="sendMessage" onsubmit="callSubmit();">
                     <div data-role="fieldcontain" >
-                        <input name="phoneNumber" id="phoneNumber" placeholder="Phone Number" value="" type="number">
+                        <input name="phoneNumber" id="phoneNumber" placeholder="Phone Number" value="" type="tel">
                         <input name="password" id="password" placeholder="Password" value="" type="password">
                         <input type=submit value=Login>
                         <input type=button value=Signup>
@@ -56,16 +56,21 @@
             }
 
             function callSubmit() {
-                alert("Checking...");
                $.ajax({
                   type: "POST",
                   url: "http://codenameapp.herokuapp.com/user/login",
                   data: {
                     phoneNumber: $('#phoneNumber').val(),
                     password: $('#password').val()
-                  }}); 
-                alert("Checking...done");
-               
+                  },
+                  success: function(data) {
+                    alert(data);
+                    if(data.logged_in)
+                        alert('loggedin');
+                    else
+                        alert('nevamind!');
+                   }
+                  }); 
             }
 
         </script>
