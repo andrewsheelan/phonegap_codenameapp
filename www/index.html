@@ -23,8 +23,8 @@
 
     </head> 
     <body style="height: 100%"> 
-        <!-- Home -->
-        <div data-role="page" id="page1">
+        <!-- Login -->
+        <div data-role="page" id="login">
             <div data-role="header">
                 <h3>
                     LOGIN
@@ -43,13 +43,22 @@
             </div>
         </div>
 
-    </body>
-    <script type="text/javascript">
-            // Listener that will invoke the onDeviceReady() function as soon as phonegap has loaded properly
-            document.addEventListener("deviceready", onDeviceReady, false);
-            function onDeviceReady() {
-                navigator.splashscreen.hide();
-                document.addEventListener("backbutton", onBackClickEvent, false); // Adding the back button listener    
+        <!-- Home -->
+        <div data-role="page" id="home">
+            <div data-role="header">
+                <h3>
+                    HOME
+                </h3>
+                 <a href="#" data-role="button" id="goLogout">Logout</a>
+            </div>
+        </div>
+        </body>
+        <script type="text/javascript">
+// Listener that will invoke the onDeviceReady() function as soon as phonegap has loaded properly
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            navigator.splashscreen.hide();
+            document.addEventListener("backbutton", onBackClickEvent, false); // Adding the back button listener    
                 
                 alert("Ready");
 
@@ -64,13 +73,22 @@
                     password: $('#password').val()
                   },
                   success: function(data) {
-                    alert(data);
-                    if(data.logged_in)
-                        alert('loggedin');
+                  if(data.logged_in) {
+                      $.mobile.changePage($('#home'), {
+                        transition: 'slide'
+                        });
+                   }
                     else
                         alert('nevamind!');
                    }
                   }); 
+            }
+
+            function goLogout() {
+                $.mobile.changePage($('#login'), {
+                        transition: 'slide'
+                });
+
             }
 
         </script>
