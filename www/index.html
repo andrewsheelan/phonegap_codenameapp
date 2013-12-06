@@ -49,17 +49,11 @@
                 <h3>
                     HOME
                 </h3>
-                 <a href="#" data-role="button" id="goLogout">Logout</a>
+                 <a href="#" data-role="button" id="goLogout" onclick="goLogout();">Logout</a>
             </div>
         </div>
         </body>
         <script type="text/javascript">
-// Listener that will invoke the onDeviceReady() function as soon as phonegap has loaded properly
-        document.addEventListener("deviceready", onDeviceReady, false);
-        function onDeviceReady() {
-            navigator.splashscreen.hide();
-            }
-
             function callSubmit() {
                $.ajax({
                   type: "POST",
@@ -72,7 +66,7 @@
                   if(data.logged_in) {
                       $.mobile.changePage($('#home'), {
                         transition: 'slide'
-                        });
+                      });
                    }
                     else
                         alert('nevamind!');
@@ -82,7 +76,8 @@
 
             function goLogout() {
                 $.mobile.changePage($('#login'), {
-                        transition: 'slide'
+                        transition: 'slide',
+                        reverse: true
                 });
 
             }
