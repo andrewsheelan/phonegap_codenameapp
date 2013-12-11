@@ -21,12 +21,12 @@
         </script>
         <script type="text/javascript" src="cordova.js"></script>
         <style>
-            .ui-listview .ui-li-icon{
-                max-height: 25px;
-                max-width: 25px;
-            }
-            .ui-li-static.ui-li-has-icon{
-                padding-left:25px;
+            .ui-li-thumb, .ui-li-icon {
+                left: 1px;
+                max-height: 45px; 
+                max-width: 45px;
+                position: absolute;
+                top: 0;
             }
         </style>
 
@@ -63,13 +63,30 @@
             <div data-role="content">
                 <input type=button value="Ask My Friends">
                 <input type=button value="Ask An Expert">
-
+                <br />
+                <br />
+                <br />
                 
                 <ul data-role="listview" data-theme="c" data-dividertheme="d">
                     <li data-role="list-divider">My Questions</li>
-                    <li><a href="docs-lists.html"> <img src="img/album-bb.jpg" /><p>Question 1</p></a></li>
-                    <li><a href="lists-ul.html"><img src="img/album-bb.jpg" /><p>Question 2</p></a></li>
-                    <li><a href="lists-nested.html">  <img src="img/album-bb.jpg" /><p>Question 3</p></a></li>
+                    <li>
+                        <a href="docs-lists.html">
+                           <img class="ui-li-icon" src="img/album-bb.jpg" />
+                           <h3>Question 1</h3>
+                       </a>
+                    </li>
+                    <li>
+                        <a href="docs-lists.html">
+                           <img class="ui-li-icon" src="img/album-bb.jpg" />
+                           <h3>Question 2</h3>
+                       </a>
+                    </li>
+                    <li>
+                        <a href="docs-lists.html">
+                           <img class="ui-li-icon" src="img/album-bb.jpg" />
+                           <h3>Question 3</h3>
+                       </a>
+                    </li>
 
                     <li data-role="list-divider">Awaiting Response</li>
                     <li><a href="docs-lists.html">Question 1</a></li>
