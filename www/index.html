@@ -64,27 +64,25 @@
                 <input type=button value="Ask My Friends">
                 <input type=button value="Ask An Expert">
                 <br />
-                <br />
-                <br />
                 
                 <ul data-role="listview" data-theme="c" data-dividertheme="d">
                     <li data-role="list-divider">My Questions</li>
                     <li>
-                        <a href="docs-lists.html">
+                        <a href="#" onclick="goAskFriends();">
                            <img class="ui-li-icon" src="img/album-bb.jpg" />
-                           <h3>Question 1</h3>
+                           <p>Question 1</p>
                        </a>
                     </li>
                     <li>
-                        <a href="docs-lists.html">
+                        <a href="#" onclick="goAskFriends();">
                            <img class="ui-li-icon" src="img/album-bb.jpg" />
-                           <h3>Question 2</h3>
+                           <p>Question 2</p>
                        </a>
                     </li>
                     <li>
-                        <a href="docs-lists.html">
+                        <a href="#" onclick="goAskFriends();">
                            <img class="ui-li-icon" src="img/album-bb.jpg" />
-                           <h3>Question 3</h3>
+                           <p>Question 3</p>
                        </a>
                     </li>
 
@@ -94,6 +92,18 @@
                     <li><a href="lists-nested.html">Question 3</a></li>
                 </ul>
             </div>
+
+        <!-- Ask Friends -->
+        <div data-role="page" id="askFriends">
+            <div data-role="header">
+                <h3>
+                    Ask Friends
+                </h3>
+                 <a href="#" data-role="button" id="goLogout" onclick="goLogout();">Logout</a>
+             </div>
+             <div data-role="content">
+             </div>
+         </div>
 
         </div>
     </body>
@@ -123,6 +133,12 @@
         $.mobile.changePage($('#login'), {
                 transition: 'slide',
                 reverse: true
+        });
+    }
+
+    function goAskFriends() {
+        $.mobile.changePage($('#askFriends'), {
+                transition: 'slide',
         });
     }
 
