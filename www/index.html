@@ -99,7 +99,7 @@
                 <h3>
                     Ask Friends
                 </h3>
-                 <a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
+                 <a href="#" data-icon="back" data-rel="back" title="Go back" onclick="goHome();">Back</a>
              </div>
              <div data-role="content">
              </div>
@@ -138,6 +138,12 @@
 
     function goAskFriends() {
         $.mobile.changePage($('#askFriends'), {
+                transition: 'slide',
+        });
+    }
+
+    function goHome() {
+        $.mobile.changePage($('#home'), {
                 transition: 'slide',
         });
     }
