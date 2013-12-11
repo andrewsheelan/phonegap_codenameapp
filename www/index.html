@@ -20,6 +20,15 @@
             });
         </script>
         <script type="text/javascript" src="cordova.js"></script>
+        <style>
+            .ui-listview .ui-li-icon{
+                max-height: 25px;
+                max-width: 25px;
+            }
+            .ui-li-static.ui-li-has-icon{
+                padding-left:25px;
+            }
+        </style>
 
     </head> 
     <body style="height: 100%"> 
@@ -32,7 +41,7 @@
             </div>
             <div data-role="content">
                 <div> <br/> <br/> <br/> <br/> <br/> <br/> <br/> </div>
-                <form id="sendMessage" onsubmit="callSubmit();">
+                <form onsubmit="callLogin();">
                     <div data-role="fieldcontain" >
                         <input name="phoneNumber" id="phoneNumber" placeholder="Phone Number" value="" type="tel">
                         <input name="password" id="password" placeholder="Password" value="" type="password">
@@ -51,38 +60,56 @@
                 </h3>
                  <a href="#" data-role="button" id="goLogout" onclick="goLogout();">Logout</a>
             </div>
+            <div data-role="content">
+                <input type=button value="Ask My Friends">
+                <input type=button value="Ask An Expert">
+
+                
+                <ul data-role="listview" data-theme="c" data-dividertheme="d">
+                    <li data-role="list-divider">My Questions</li>
+                    <li><a href="docs-lists.html"> <img src="img/album-bb.jpg" /><p>Question 1</p></a></li>
+                    <li><a href="lists-ul.html"><img src="img/album-bb.jpg" /><p>Question 2</p></a></li>
+                    <li><a href="lists-nested.html">  <img src="img/album-bb.jpg" /><p>Question 3</p></a></li>
+
+                    <li data-role="list-divider">Awaiting Response</li>
+                    <li><a href="docs-lists.html">Question 1</a></li>
+                    <li><a href="lists-ul.html">Question 2</a></li>
+                    <li><a href="lists-nested.html">Question 3</a></li>
+                </ul>
+            </div>
+
         </div>
-        </body>
-        <script type="text/javascript">
-            function callSubmit() {
-               $.ajax({
-                  type: "POST",
-                  url: "http://codenameapp.herokuapp.com/user/login",
-                  data: {
-                    phoneNumber: $('#phoneNumber').val(),
-                    password: $('#password').val()
-                  },
-                  success: function(data) {
-                  if(data.logged_in) {
-                      $.mobile.changePage($('#home'), {
-                        transition: 'slide'
-                      });
-                   }
-                    else
-                        alert('nevamind!');
-                   }
-                  }); 
+    </body>
+    <script type="text/javascript">
+    function callLogin() {
+       $.ajax({
+      type: "POST",
+      url: "http://codenameapp.herokuapp.com/user/login",
+      data: {
+        phoneNumber: $('#phoneNumber').val(),
+        password: $('#password').val()
+      },
+      success: function(data) {
+          if(data.logged_in) {
+              $.mobile.changePage($('#home'), {
+                transition: 'slide'
+              });
+           }
+           else{
+                alert('nevamind!');
             }
+       }
+      }); 
+    }
 
-            function goLogout() {
-                $.mobile.changePage($('#login'), {
-                        transition: 'slide',
-                        reverse: true
-                });
+    function goLogout() {
+        $.mobile.changePage($('#login'), {
+                transition: 'slide',
+                reverse: true
+        });
+    }
 
-            }
-
-        </script>
+    </script>
 </html>
 
 
