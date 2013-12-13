@@ -13,6 +13,11 @@
         <param name="ios-package" value="CDVInAppBrowser" />
     </feature>
     <feature name="http://api.phonegap.com/1.0/network"/>
+    <feature name="Camera" value="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+        <param name="ios-package" value="CDVCamera" />
+    </feature>
+  
 
     <access origin="*" />
 

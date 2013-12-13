@@ -61,8 +61,8 @@
                  <a href="#" data-role="button" id="goLogout" onclick="goLogout();">Logout</a>
             </div>
             <div data-role="content">
-                <input type=button value="Ask My Friends">
-                <input type=button value="Ask An Expert">
+                <input type=button value="Ask My Friends" onclick="goAskFriends();">
+                <input type=button value="Ask An Expert" onclick="goAskExpert();">
                 <br />
                 
                 <ul data-role="listview" data-theme="c" data-dividertheme="d">
@@ -102,8 +102,21 @@
                  <a href="#" data-icon="back" data-rel="back" title="Go back" onclick="goHome();">Back</a>
              </div>
              <div data-role="content">
+                 <fieldset class="ui-grid-b">
+                    <div class="ui-block-a"><input type="file" accept="image/*;capture=camera"></div>
+                    <div class="ui-block-b"><input type="file" accept="image/*;capture=camera"></div>
+                    <div class="ui-block-c"><input type="file" accept="image/*;capture=camera"></div>
+                </fieldset>
+
+                <input type="TEXT" placeholder="Question ?">
+                <input type=button  onclick="fetchContacts()" value="loadcontacts">
+
+                <div id="contacts_popupMenu" data-role="popup" data-position-to="window" onclick="fetchContacts()">
+                    <ul id="contact_list" data-role="listview" data-inset="true" style="width:210px;">
+                        <li data-role="divider" data-theme="b">Choose Contact.</li>
+                    </ul>
+                </div>
              </div>
-         </div>
 
         </div>
     </body>
@@ -149,6 +162,29 @@
                 reverse: true
         });
     }
+
+    function loadimage() {
+        alert(document.getElementById('input1').value);
+        document.getElementById('image1').src = document.getElementById('input1').value;
+    }
+
+    function fetchContacts() {
+        // find all contacts with 'Bob' in any name field
+        var options      = new ContactFindOptions();
+        options.filter   = "";
+        options.multiple = true;
+        var fields       = ["displayName", "name"];
+        navigator.contacts.find(fields, function(contacts) {
+            for (var i = 0; i < contacts.length; i++) {
+                if(contacts[i].name)
+                    $("#contact_list").append('<li data-theme="b">'+contacts[i].name.givenName + '||' + contacts[i].name.formatted + '<//li>');
+            }
+        }, function(contactError) {
+            alert('onError!');
+        }, options);
+    
+    }
+
 
     </script>
 </html>
